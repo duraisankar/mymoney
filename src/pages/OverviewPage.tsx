@@ -56,7 +56,7 @@ export default function OverviewPage() {
 
       {/* Stat Cards */}
       {totals && (
-        <div className="flex gap-3 px-5 mb-6 animate-scale-in">
+        <div className="flex gap-3 px-4 mb-5 animate-scale-in">
           <StatCard
             label="Total Income"
             amount={totals.totalIncome}
@@ -74,14 +74,14 @@ export default function OverviewPage() {
       <StatsChart data={weeklyStats} />
 
       {/* Income / Expenses Toggle */}
-      <div className="flex mx-5 mt-5 mb-3 bg-gray-100 rounded-xl p-1 animate-fade-in-up delay-300">
+      <div className="flex mx-4 mt-5 mb-4 rounded-full overflow-hidden border border-gray-200 animate-fade-in-up delay-300">
         <button
           id="tab-income"
           onClick={() => setActiveTab('income')}
-          className={`flex-1 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 cursor-pointer ${
+          className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 cursor-pointer ${
             activeTab === 'income'
-              ? 'bg-white text-text-primary shadow-sm'
-              : 'text-text-muted hover:text-text-secondary'
+              ? 'bg-white text-text-primary'
+              : 'bg-gray-50 text-text-muted hover:text-text-secondary'
           }`}
         >
           Income
@@ -89,10 +89,10 @@ export default function OverviewPage() {
         <button
           id="tab-expenses"
           onClick={() => setActiveTab('expenses')}
-          className={`flex-1 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 cursor-pointer ${
+          className={`flex-1 py-3 text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
             activeTab === 'expenses'
-              ? 'bg-accent-500 text-white shadow-sm'
-              : 'text-text-muted hover:text-text-secondary'
+              ? 'bg-accent-500 text-white'
+              : 'bg-gray-50 text-text-muted hover:text-text-secondary'
           }`}
         >
           Expenses
@@ -100,13 +100,13 @@ export default function OverviewPage() {
       </div>
 
       {/* Category List */}
-      <div className="divide-y divide-gray-50">
+      <div>
         {activeTab === 'expenses' ? (
           categories.map((cat, index) => (
             <CategoryItem key={cat.id} item={cat} index={index} />
           ))
         ) : (
-          <div className="px-5 py-8 text-center text-sm text-text-muted">
+          <div className="px-4 py-8 text-center text-sm text-text-muted">
             Income breakdown coming soon
           </div>
         )}

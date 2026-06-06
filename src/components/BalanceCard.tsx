@@ -16,10 +16,10 @@ export default function BalanceCard({ data }: BalanceCardProps) {
   return (
     <div
       id="balance-card"
-      className="mx-5 rounded-2xl bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 p-5 text-white shadow-balance animate-scale-in"
+      className="mx-4 rounded-3xl bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 p-5 text-white shadow-balance animate-scale-in"
     >
       {/* Top Row */}
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2">
         <button
           id="balance-type-selector"
           className="flex items-center gap-1 text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
@@ -42,9 +42,9 @@ export default function BalanceCard({ data }: BalanceCardProps) {
       </p>
 
       {/* Income / Expenses Row */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-8">
         {/* Income */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/15">
             <ArrowDownLeft size={14} />
           </div>
@@ -57,7 +57,7 @@ export default function BalanceCard({ data }: BalanceCardProps) {
         </div>
 
         {/* Expenses */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/15">
             <ArrowUpRight size={14} />
           </div>

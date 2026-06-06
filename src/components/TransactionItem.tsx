@@ -46,12 +46,12 @@ export default function TransactionItem({
   return (
     <div
       id={`transaction-${transaction.id}`}
-      className="flex items-center gap-3 px-5 py-3.5 hover:bg-primary-50/50 transition-colors duration-200 animate-fade-in-up cursor-pointer"
+      className="flex items-center gap-3 px-4 py-3.5 hover:bg-primary-50/50 transition-colors duration-200 animate-fade-in-up cursor-pointer"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Icon */}
       <div
-        className={`flex items-center justify-center w-11 h-11 rounded-xl ${transaction.iconBg} ${transaction.iconColor} shrink-0`}
+        className={`flex items-center justify-center w-11 h-11 rounded-full ${transaction.iconBg} ${transaction.iconColor} shrink-0`}
       >
         {iconMap[transaction.icon] ?? <Wallet size={18} />}
       </div>

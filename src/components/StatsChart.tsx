@@ -47,7 +47,7 @@ function CustomTooltip({
 
 export default function StatsChart({ data }: StatsChartProps) {
   return (
-    <div id="stats-chart-section" className="px-5 animate-fade-in-up delay-200">
+    <div id="stats-chart-section" className="px-4 animate-fade-in-up delay-200">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-1">
         <div>
@@ -64,7 +64,7 @@ export default function StatsChart({ data }: StatsChartProps) {
       </div>
 
       {/* Chart */}
-      <div className="bg-white rounded-2xl p-4 shadow-card mt-3">
+      <div className="bg-white rounded-2xl p-4 mt-3">
         <ResponsiveContainer width="100%" height={200}>
           <BarChart
             data={data}
@@ -86,7 +86,7 @@ export default function StatsChart({ data }: StatsChartProps) {
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 11, fill: '#9ca3af' }}
-              tickFormatter={(value: number) => `$${(value / 1000).toFixed(0)}k`}
+              tickFormatter={(value: number) => value === 0 ? '$0' : `$${(value / 1000).toFixed(0)}k`}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(124, 58, 237, 0.05)' }} />
             <Bar

@@ -15,7 +15,7 @@ export default function StatCard({ label, amount, color }: StatCardProps) {
   return (
     <div
       id={`stat-card-${label.toLowerCase().replace(/\s+/g, '-')}`}
-      className="flex-1 bg-white rounded-2xl p-4 shadow-card hover:shadow-card-hover transition-shadow duration-300"
+      className="flex-1 bg-white rounded-2xl p-4 border border-gray-200 hover:shadow-card-hover transition-shadow duration-300"
     >
       <p className="text-xs font-medium text-text-secondary mb-2">{label}</p>
       <div className="flex items-center gap-2">

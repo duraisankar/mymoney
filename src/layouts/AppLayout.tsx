@@ -5,10 +5,10 @@ export default function AppLayout() {
   return (
     <div
       id="app-layout"
-      className="relative w-full max-w-[430px] min-h-dvh bg-surface-bg flex flex-col"
+      className="relative w-full max-w-[430px] min-h-dvh bg-white flex flex-col"
     >
       {/* Page Content */}
-      <main className="flex-1 pb-20 overflow-y-auto">
+      <main className="flex-1 pb-20 overflow-y-auto overflow-x-hidden">
         <Outlet />
       </main>
 

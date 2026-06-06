@@ -37,10 +37,10 @@ export default function BottomNav() {
   return (
     <nav
       id="bottom-nav"
-      className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/95 backdrop-blur-lg border-t border-gray-100 z-50"
+      className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-gray-50/95 backdrop-blur-lg border-t border-gray-200 z-50"
       style={{ paddingBottom: 'var(--spacing-safe-bottom)' }}
     >
-      <div className="flex items-center justify-around px-2 pt-2 pb-2">
+      <div className="flex items-center justify-around px-2 pt-2 pb-3">
         {navItems.map((item) => {
           const isActive =
             item.id !== 'add' && location.pathname === item.path;
@@ -52,7 +52,7 @@ export default function BottomNav() {
                 key={item.id}
                 id="fab-add-transaction"
                 onClick={() => handleNavClick(item)}
-                className="relative -mt-7 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-fab active:scale-95 transition-transform duration-150 cursor-pointer"
+                className="relative -mt-8 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-fab active:scale-95 transition-transform duration-150 cursor-pointer"
                 aria-label="Add transaction"
               >
                 {item.icon}
@@ -65,7 +65,7 @@ export default function BottomNav() {
               key={item.id}
               id={`nav-${item.id}`}
               onClick={() => handleNavClick(item)}
-              className={`flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-colors duration-200 cursor-pointer ${
+              className={`relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-colors duration-200 cursor-pointer ${
                 isActive
                   ? 'text-primary-600'
                   : 'text-gray-400 hover:text-gray-600'
@@ -75,9 +75,6 @@ export default function BottomNav() {
             >
               {item.icon}
               <span className="text-[10px] font-medium">{item.label}</span>
-              {isActive && (
-                <span className="absolute -bottom-0.5 w-1 h-1 rounded-full bg-primary-600" />
-              )}
             </button>
           );
         })}

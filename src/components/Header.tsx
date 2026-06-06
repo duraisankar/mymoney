@@ -8,7 +8,7 @@ export default function Header({ title }: HeaderProps) {
   return (
     <header
       id="app-header"
-      className="flex items-center justify-between px-5 py-4 animate-fade-in"
+      className="flex items-center justify-between px-4 py-4 animate-fade-in"
     >
       <button
         id="header-menu"
