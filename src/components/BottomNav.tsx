@@ -22,13 +22,17 @@ const navItems: NavItem[] = [
   { id: 'profile', label: 'Profile', icon: <User size={22} />, path: '/home' },
 ];
 
-export default function BottomNav() {
+interface BottomNavProps {
+  onAddClick?: () => void;
+}
+
+export default function BottomNav({ onAddClick }: BottomNavProps) {
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleNavClick = (item: NavItem) => {
     if (item.id === 'add') {
-      // TODO: Open add transaction modal
+      onAddClick?.();
       return;
     }
     navigate(item.path);

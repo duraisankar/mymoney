@@ -1,32 +1,10 @@
-import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import BalanceCard from '../components/BalanceCard';
 import TransactionItem from '../components/TransactionItem';
-import { getBalanceSummary, getTransactions } from '../services/api';
-import type { BalanceSummary, Transaction } from '../types';
+import { useTransactions } from '../context/TransactionContext';
 
 export default function HomePage() {
-  const [balance, setBalance] = useState<BalanceSummary | null>(null);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [balanceData, txnData] = await Promise.all([
-          getBalanceSummary(),
-          getTransactions(),
-        ]);
-        setBalance(balanceData);
-        setTransactions(txnData);
-      } catch (error) {
-        console.error('Failed to fetch home data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+  const { balance, transactions, loading } = useTransactions();
 
   if (loading) {
     return (

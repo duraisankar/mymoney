@@ -1,46 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '../components/Header';
 import StatCard from '../components/StatCard';
 import StatsChart from '../components/StatsChart';
 import CategoryItem from '../components/CategoryItem';
-import {
-  getOverviewTotals,
-  getWeeklyStats,
-  getCategoryExpenses,
-} from '../services/api';
-import type { WeeklyStats, CategoryExpense } from '../types';
+import { useTransactions } from '../context/TransactionContext';
 
 type TabType = 'income' | 'expenses';
 
 export default function OverviewPage() {
-  const [totals, setTotals] = useState<{
-    totalIncome: number;
-    totalExpenses: number;
-  } | null>(null);
-  const [weeklyStats, setWeeklyStats] = useState<WeeklyStats[]>([]);
-  const [categories, setCategories] = useState<CategoryExpense[]>([]);
+  const { overviewTotals: totals, weeklyStats, categories, loading } = useTransactions();
   const [activeTab, setActiveTab] = useState<TabType>('expenses');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [totalsData, statsData, catData] = await Promise.all([
-          getOverviewTotals(),
-          getWeeklyStats(),
-          getCategoryExpenses(),
-        ]);
-        setTotals(totalsData);
-        setWeeklyStats(statsData);
-        setCategories(catData);
-      } catch (error) {
-        console.error('Failed to fetch overview data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
 
   if (loading) {
     return (

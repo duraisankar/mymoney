@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router';
 import BottomNav from '../components/BottomNav';
+import AddTransactionModal from '../components/AddTransactionModal';
 
 export default function AppLayout() {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   return (
     <div
       id="app-layout"
@@ -13,7 +17,13 @@ export default function AppLayout() {
       </main>
 
       {/* Bottom Navigation */}
-      <BottomNav />
+      <BottomNav onAddClick={() => setIsAddModalOpen(true)} />
+
+      {/* Add Transaction Modal */}
+      <AddTransactionModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+      />
     </div>
   );
 }
